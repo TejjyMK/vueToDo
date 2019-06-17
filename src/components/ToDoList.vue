@@ -2,9 +2,10 @@
     .holder 
         h1 Tejj's To Do List
         input.todo-input(type="text", placeholder='What needs to be done' v-model='newTodo' @keyup.enter='addtoDo') 
-        | To Do List goes here
+        //- | To Do List goes here
         .todo-item(v-for="todo in todos", :key='todo.id')
-           | {{todo.title}}
+           div {{todo.title}}
+           .remove-item &times;
    
 </template>
 
@@ -31,7 +32,7 @@ export default {
   },
   methods: {
     addtoDo() {
-    // ? input validation check 
+      // ? input validation check
       if (this.newTodo.trim().length == 0) {
         return;
       }
@@ -65,6 +66,18 @@ export default {
 
     &:focus
         outline: 0 
-        outline-color: gold
+    
+  .todo-item
+    margin-bottom: 12px
+    display: flex
+    align-items: center
+    justify-content: space-between
+
+  .remove-item
+    cursor: pointer
+    margin-left: 14px
+    &:hover
+        color: red
+    
         
 </style>
